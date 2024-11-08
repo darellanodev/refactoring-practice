@@ -2,11 +2,9 @@ const invoices = require('./invoices.json');
 const games = require('./games.json');
 
 function statement (invoice, games) {
-    console.log(games)
     let totalAmount = 0
     let volumeCredits = 0
 
-    console.log(invoice)
     let result = `Statement for ${invoice.customer}\n`
 
     const format = new Intl.NumberFormat("en-US", 
@@ -20,7 +18,6 @@ function statement (invoice, games) {
     for (let playedGame of invoice.playedGames) {
         const game = games[playedGame.id]
 
-        console.log(playedGame.id,game)
         let thisAmount = 0
         
         switch (game.genre) {
