@@ -1,0 +1,5 @@
+{
+    "gif-tower-defense" : {"title": "Gif Tower Defense", "genre": "towerDefense"},
+    "jetpack" : {"title": "Jet Pack", "genre": "arcade"},
+    "task-eater-manager" : {"title": "Task Eater Manager", "genre": "clicker"}
+}

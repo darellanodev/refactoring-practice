@@ -1,0 +1,15 @@
+[
+    {
+        "customer": "michael123",
+        "playedGames": [
+            {
+                "id": "gif-tower-defense",
+                "days": 12
+            },
+            {
+                "id": "task-eater-manager",
+                "days": 20
+            }
+        ]
+    }
+]
