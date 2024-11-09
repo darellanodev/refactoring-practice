@@ -1,4 +1,13 @@
-# Refactoring book
+# Refactoring practices
+
+This is an exercise to practice refactoring techniques.
+
+## Setup
+
+1. Clone this repository
+2. Install the dependencies with `pnpm install`
+3. Run the tests with `pnpm test`
+4. Run the program with `pnpm start`
 
 ## Notes
 
