@@ -6,8 +6,8 @@ This is an exercise to practice refactoring techniques.
 
 1. Clone this repository
 2. Install the dependencies with `pnpm install`
-3. Run the tests with `pnpm test`
-4. Run the program with `pnpm start`
+3. Run the tests with `pnpm test` or run the `run_tests.sh` script.
+4. Run the program with `pnpm start` or run the `run.sh` script.
 
 ## Notes
 
