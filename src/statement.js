@@ -38,25 +38,25 @@ function statement (invoice, games) {
 
 
     function getAmount(game, playedGame) {
-        let thisAmount = 0
+        let result = 0
         switch (game.genre) {
             case "clicker":
-                thisAmount = 2
+                result = 2
                 if (playedGame.days > 10) {
-                    thisAmount += 10 * (playedGame.days - 10)
+                    result += 10 * (playedGame.days - 10)
                 }
                 break
             case "towerDefense":
-                thisAmount = 3
+                result = 3
                 if (playedGame.days > 8) {
-                    thisAmount += 12 * (playedGame.days - 10)
+                    result += 12 * (playedGame.days - 10)
                 }
                 break
             default:
                 throw new Error(`unknown type: ${game.genre}`)
 
         }
-        return thisAmount
+        return result
     }
 }
 
