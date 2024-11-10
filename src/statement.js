@@ -13,20 +13,20 @@ function statement (invoice, games) {
     ).format
 
     for (let playedGame of invoice.playedGames) {
-        const game = games[playedGame.id]
+        const aGame = games[playedGame.id]
         
-        thisAmount = getAmount(game, playedGame)
+        thisAmount = getAmount(aGame, playedGame)
 
         // add volume credits
         volumeCredits += Math.max(playedGame.days - 5, 0)
 
         // add extra credit for every five towerDefense played days
-        if (game.genre === "towerDefense") {
+        if (aGame.genre === "towerDefense") {
             volumeCredits += Math.floor(playedGame.days / 5)
         }
 
         // print line for this order
-        result += `   ${game.title}: ${format(thisAmount/10)} (${playedGame.days} days) \n`
+        result += `   ${aGame.title}: ${format(thisAmount/10)} (${playedGame.days} days) \n`
 
         totalAmount += thisAmount
 
@@ -37,9 +37,9 @@ function statement (invoice, games) {
     return result
 
 
-    function getAmount(game, playedGame) {
+    function getAmount(aGame, playedGame) {
         let result = 0
-        switch (game.genre) {
+        switch (aGame.genre) {
             case "clicker":
                 result = 2
                 if (playedGame.days > 10) {
@@ -53,7 +53,7 @@ function statement (invoice, games) {
                 }
                 break
             default:
-                throw new Error(`unknown type: ${game.genre}`)
+                throw new Error(`unknown type: ${aGame.genre}`)
 
         }
         return result
