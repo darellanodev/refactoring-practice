@@ -1,1 +1,1 @@
-node billPrinter.js
+node src/main.js
