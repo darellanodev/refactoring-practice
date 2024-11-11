@@ -17,20 +17,19 @@ function statement (invoice, games) {
     }
 
     for (let aPlayedGame of invoice.playedGames) {
-        const game = gameFor(aPlayedGame)
         
-        thisAmount = getAmount(aPlayedGame, game)
+        thisAmount = getAmount(aPlayedGame, gameFor(aPlayedGame))
 
         // add volume credits
         volumeCredits += Math.max(aPlayedGame.days - 5, 0)
 
         // add extra credit for every five towerDefense played days
-        if (game.genre === "towerDefense") {
+        if (gameFor(aPlayedGame).genre === "towerDefense") {
             volumeCredits += Math.floor(aPlayedGame.days / 5)
         }
 
         // print line for this order
-        result += `   ${game.title}: ${format(thisAmount/10)} (${aPlayedGame.days} days) \n`
+        result += `   ${gameFor(aPlayedGame).title}: ${format(thisAmount/10)} (${aPlayedGame.days} days) \n`
 
         totalAmount += thisAmount
 
