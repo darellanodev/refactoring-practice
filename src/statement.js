@@ -12,21 +12,21 @@ function statement (invoice, games) {
         }
     ).format
 
-    for (let playedGame of invoice.playedGames) {
-        const aGame = games[playedGame.id]
+    for (let aPlayedGame of invoice.playedGames) {
+        const game = games[aPlayedGame.id]
         
-        thisAmount = getAmount(aGame, playedGame)
+        thisAmount = getAmount(aPlayedGame, game)
 
         // add volume credits
-        volumeCredits += Math.max(playedGame.days - 5, 0)
+        volumeCredits += Math.max(aPlayedGame.days - 5, 0)
 
         // add extra credit for every five towerDefense played days
-        if (aGame.genre === "towerDefense") {
-            volumeCredits += Math.floor(playedGame.days / 5)
+        if (game.genre === "towerDefense") {
+            volumeCredits += Math.floor(aPlayedGame.days / 5)
         }
 
         // print line for this order
-        result += `   ${aGame.title}: ${format(thisAmount/10)} (${playedGame.days} days) \n`
+        result += `   ${game.title}: ${format(thisAmount/10)} (${aPlayedGame.days} days) \n`
 
         totalAmount += thisAmount
 
@@ -37,23 +37,23 @@ function statement (invoice, games) {
     return result
 
 
-    function getAmount(aGame, playedGame) {
+    function getAmount(aPlayedGame, game) {
         let result = 0
-        switch (aGame.genre) {
+        switch (game.genre) {
             case "clicker":
                 result = 2
-                if (playedGame.days > 10) {
-                    result += 10 * (playedGame.days - 10)
+                if (aPlayedGame.days > 10) {
+                    result += 10 * (aPlayedGame.days - 10)
                 }
                 break
             case "towerDefense":
                 result = 3
-                if (playedGame.days > 8) {
-                    result += 12 * (playedGame.days - 10)
+                if (aPlayedGame.days > 8) {
+                    result += 12 * (aPlayedGame.days - 10)
                 }
                 break
             default:
-                throw new Error(`unknown type: ${aGame.genre}`)
+                throw new Error(`unknown type: ${game.genre}`)
 
         }
         return result
