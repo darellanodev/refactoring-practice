@@ -12,8 +12,12 @@ function statement (invoice, games) {
         }
     ).format
 
+    function gameFor(aPlayedGame) {
+        return games[aPlayedGame.id]
+    }
+
     for (let aPlayedGame of invoice.playedGames) {
-        const game = games[aPlayedGame.id]
+        const game = gameFor(aPlayedGame)
         
         thisAmount = getAmount(aPlayedGame, game)
 
