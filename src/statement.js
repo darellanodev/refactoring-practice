@@ -18,8 +18,6 @@ function statement (invoice, games) {
 
     for (let aPlayedGame of invoice.playedGames) {
         
-        thisAmount = amountFor(aPlayedGame)
-
         // add volume credits
         volumeCredits += Math.max(aPlayedGame.days - 5, 0)
 
@@ -29,9 +27,9 @@ function statement (invoice, games) {
         }
 
         // print line for this order
-        result += `   ${gameFor(aPlayedGame).title}: ${format(thisAmount/10)} (${aPlayedGame.days} days) \n`
+        result += `   ${gameFor(aPlayedGame).title}: ${format(amountFor(aPlayedGame)/10)} (${aPlayedGame.days} days) \n`
 
-        totalAmount += thisAmount
+        totalAmount += amountFor(aPlayedGame)
 
     }
 
