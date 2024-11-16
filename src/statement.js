@@ -18,7 +18,7 @@ function statement (invoice, games) {
 
     for (let aPlayedGame of invoice.playedGames) {
         
-        thisAmount = getAmount(aPlayedGame, gameFor(aPlayedGame))
+        thisAmount = amountFor(aPlayedGame)
 
         // add volume credits
         volumeCredits += Math.max(aPlayedGame.days - 5, 0)
@@ -40,7 +40,7 @@ function statement (invoice, games) {
     return result
 
 
-    function getAmount(aPlayedGame, game) {
+    function amountFor(aPlayedGame) {
         let result = 0
         switch (gameFor(aPlayedGame).genre) {
             case "clicker":
