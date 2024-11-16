@@ -42,7 +42,7 @@ function statement (invoice, games) {
 
     function getAmount(aPlayedGame, game) {
         let result = 0
-        switch (game.genre) {
+        switch (gameFor(aPlayedGame).genre) {
             case "clicker":
                 result = 2
                 if (aPlayedGame.days > 10) {
@@ -56,7 +56,7 @@ function statement (invoice, games) {
                 }
                 break
             default:
-                throw new Error(`unknown type: ${game.genre}`)
+                throw new Error(`unknown type: ${gameFor(aPlayedGame).genre}`)
 
         }
         return result
