@@ -30,13 +30,16 @@ function statement (invoice, games) {
 
     for (let aPlayedGame of invoice.playedGames) {
         
-        volumeCredits += volumeCreditsFor(aPlayedGame)
 
         // print line for this order
         result += `   ${gameFor(aPlayedGame).title}: ${usd(amountFor(aPlayedGame)/10)} (${aPlayedGame.days} days) \n`
 
         totalAmount += amountFor(aPlayedGame)
 
+    }
+    
+    for (let aPlayedGame of invoice.playedGames) {
+        volumeCredits += volumeCreditsFor(aPlayedGame)
     }
 
     result += `Amount owed is ${usd(totalAmount/10)}\n`
