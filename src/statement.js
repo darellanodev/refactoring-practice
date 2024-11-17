@@ -45,10 +45,9 @@ function statement (invoice, games) {
 
     }
 
-    let volumeCredits = totalVolumeCredits()
 
     result += `Amount owed is ${usd(totalAmount/10)}\n`
-    result += `You earned ${volumeCredits} credits\n`
+    result += `You earned ${totalVolumeCredits()} credits\n`
     return result
 
 
