@@ -16,15 +16,18 @@ function statement (invoice, games) {
         return games[aPlayedGame.id]
     }
 
+    function volumeCreditsFor(aPlayedGame) {
+        let result = 0
+        result += Math.max(aPlayedGame.days - 5, 0)
+        if (gameFor(aPlayedGame).genre === "towerDefense") {
+            result += Math.floor(aPlayedGame.days / 5)
+        }
+        return result
+    }
+
     for (let aPlayedGame of invoice.playedGames) {
         
-        // add volume credits
-        volumeCredits += Math.max(aPlayedGame.days - 5, 0)
-
-        // add extra credit for every five towerDefense played days
-        if (gameFor(aPlayedGame).genre === "towerDefense") {
-            volumeCredits += Math.floor(aPlayedGame.days / 5)
-        }
+        volumeCredits += volumeCreditsFor(aPlayedGame)
 
         // print line for this order
         result += `   ${gameFor(aPlayedGame).title}: ${format(amountFor(aPlayedGame)/10)} (${aPlayedGame.days} days) \n`
