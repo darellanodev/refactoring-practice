@@ -27,6 +27,14 @@ function statement (invoice, games) {
         return result
     }
 
+    function totalVolumeCredits() {
+        let volumeCredits = 0
+        for (let aPlayedGame of invoice.playedGames) {
+            volumeCredits += volumeCreditsFor(aPlayedGame)
+        }
+        return volumeCredits
+    }
+
     for (let aPlayedGame of invoice.playedGames) {
         
 
@@ -37,10 +45,7 @@ function statement (invoice, games) {
 
     }
 
-    let volumeCredits = 0
-    for (let aPlayedGame of invoice.playedGames) {
-        volumeCredits += volumeCreditsFor(aPlayedGame)
-    }
+    let volumeCredits = totalVolumeCredits()
 
     result += `Amount owed is ${usd(totalAmount/10)}\n`
     result += `You earned ${volumeCredits} credits\n`
