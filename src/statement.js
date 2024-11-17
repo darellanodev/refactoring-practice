@@ -1,6 +1,5 @@
 function statement (invoice, games) {
     let totalAmount = 0
-    let volumeCredits = 0
 
     let result = `Statement for ${invoice.customer}\n`
 
@@ -37,7 +36,8 @@ function statement (invoice, games) {
         totalAmount += amountFor(aPlayedGame)
 
     }
-    
+
+    let volumeCredits = 0
     for (let aPlayedGame of invoice.playedGames) {
         volumeCredits += volumeCreditsFor(aPlayedGame)
     }
