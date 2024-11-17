@@ -4,13 +4,16 @@ function statement (invoice, games) {
 
     let result = `Statement for ${invoice.customer}\n`
 
-    const format = new Intl.NumberFormat("en-US", 
-        {
-            style: "currency", 
-            currency: "USD", 
-            minimumFractionDigits:2
-        }
-    ).format
+    function usd(aNumber) {
+        return new Intl.NumberFormat("en-US", 
+            {
+                style: "currency", 
+                currency: "USD", 
+                minimumFractionDigits:2
+            }
+        ).format(aNumber)
+    }
+
 
     function gameFor(aPlayedGame) {
         return games[aPlayedGame.id]
@@ -30,13 +33,13 @@ function statement (invoice, games) {
         volumeCredits += volumeCreditsFor(aPlayedGame)
 
         // print line for this order
-        result += `   ${gameFor(aPlayedGame).title}: ${format(amountFor(aPlayedGame)/10)} (${aPlayedGame.days} days) \n`
+        result += `   ${gameFor(aPlayedGame).title}: ${usd(amountFor(aPlayedGame)/10)} (${aPlayedGame.days} days) \n`
 
         totalAmount += amountFor(aPlayedGame)
 
     }
 
-    result += `Amount owed is ${format(totalAmount/10)}\n`
+    result += `Amount owed is ${usd(totalAmount/10)}\n`
     result += `You earned ${volumeCredits} credits\n`
     return result
 
